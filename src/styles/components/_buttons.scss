@@ -1,0 +1,48 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.btn {
+  @include button-base;
+
+  &--primary {
+    @include button-primary;
+  }
+
+  &--secondary {
+    @include button-secondary;
+  }
+
+  &--ghost {
+    @include button-ghost;
+  }
+
+  &--danger {
+    @include button-danger;
+  }
+
+  &--warning {
+    @include button-base;
+    background-color: $yellow-500;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: $yellow-600;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $yellow-700;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+    }
+  }
+
+  &--sm {
+    @include button-size-sm;
+  }
+
+  &--lg {
+    @include button-size-lg;
+  }
+} 

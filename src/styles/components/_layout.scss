@@ -1,0 +1,197 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// ======================================
+// PAGE LAYOUT
+// ======================================
+
+.page {
+  display: flex;
+  height: 100vh;
+  background-color: $gray-50;
+}
+
+.page__sidebar {
+  flex-shrink: 0;
+}
+
+.page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page__topbar {
+  flex-shrink: 0;
+  border-bottom: $border-width-thin solid $gray-200;
+  background-color: white;
+}
+
+.page__content {
+  flex: 1;
+  overflow: auto;
+  padding: $spacing-6;
+}
+
+// ======================================
+// CONFIRMATION MODAL
+// ======================================
+
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+}
+
+.confirmation-modal__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.confirmation-modal__content {
+  position: relative;
+  background-color: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-xl;
+  max-width: 28rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.confirmation-modal__header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: $spacing-4;
+}
+
+.confirmation-modal__close {
+  background: white;
+  border: none;
+  border-radius: $border-radius-md;
+  color: $gray-400;
+  cursor: pointer;
+  padding: $spacing-2;
+  transition: color $transition-duration-fast ease;
+
+  &:hover {
+    color: $gray-600;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.confirmation-modal__close-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.confirmation-modal__body {
+  display: flex;
+  align-items: flex-start;
+  padding: $spacing-6;
+  gap: $spacing-4;
+
+  @include media-sm {
+    gap: $spacing-6;
+  }
+}
+
+.confirmation-modal__icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include media-sm {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &--danger {
+    background-color: $red-100;
+    color: $red-600;
+  }
+
+  &--warning {
+    background-color: $yellow-100;
+    color: $yellow-600;
+  }
+
+  &--info {
+    background-color: $blue-100;
+    color: $blue-600;
+  }
+}
+
+.confirmation-modal__warning-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.confirmation-modal__text {
+  flex: 1;
+  text-align: center;
+
+  @include media-sm {
+    text-align: left;
+  }
+}
+
+.confirmation-modal__title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-2;
+  
+  @include media-md {
+    font-size: $font-size-xl;
+  }
+}
+
+.confirmation-modal__message {
+  font-size: $font-size-sm;
+  color: $gray-500;
+  line-height: $line-height-normal;
+  white-space: pre-line;
+}
+
+.confirmation-modal__actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: $spacing-3;
+  padding: $spacing-5 $spacing-6 $spacing-6;
+
+  @include media-sm {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+
+  .btn {
+    width: 100%;
+
+    @include media-sm {
+      width: auto;
+    }
+  }
+} 

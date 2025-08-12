@@ -1,0 +1,297 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.topbar {
+  background-color: white;
+  box-shadow: $shadow-sm;
+  border-bottom: 1px solid $gray-200;
+
+  &__container {
+    @include flex-between;
+    padding: 1rem 1.5rem;
+  }
+
+  &__search-container {
+    @include flex-center;
+    flex: 1 1 0%;
+
+    .search-wrapper {
+      max-width: 28rem;
+      width: 100%;
+
+      .search-input-wrapper {
+        position: relative;
+
+        .search-icon {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          padding-left: 0.75rem;
+          @include flex-center;
+          pointer-events: none;
+
+          svg {
+            height: 1.25rem;
+            width: 1.25rem;
+            color: $gray-400;
+          }
+        }
+
+        input {
+          display: block;
+          width: 100%;
+          padding-left: 2.5rem;
+          padding-right: 0.75rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          border: 1px solid $gray-300;
+          border-radius: $border-radius-md;
+          background-color: white;
+          color: $gray-900;
+
+          &::placeholder {
+            color: $gray-500;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: $primary-500;
+            box-shadow: 0 0 0 1px $primary-500;
+          }
+        }
+      }
+    }
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: 1rem;
+
+    .notification-btn {
+      padding: 0.5rem;
+      color: $gray-400;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: $gray-600;
+      }
+
+      svg {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+
+    .user-menu {
+      @include flex-center;
+      gap: 0.75rem;
+      position: relative;
+
+      .user-info {
+        text-align: right;
+
+        .user-name {
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: $gray-900;
+          margin: 0;
+        }
+
+        .user-role {
+          font-size: 0.75rem;
+          color: $gray-500;
+          margin: 0;
+        }
+      }
+
+      .user-avatar {
+        @include flex-center;
+        gap: 0.25rem;
+        padding: 0.25rem;
+        color: $gray-400;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+        border-radius: $border-radius-md;
+
+        &:hover {
+          color: $gray-600;
+          background-color: $gray-50;
+        }
+
+        &:focus {
+          outline: none;
+          @include focus-ring;
+        }
+
+        svg {
+          height: 2rem;
+          width: 2rem;
+        }
+
+        .dropdown-icon {
+          height: 1rem;
+          width: 1rem;
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &[aria-expanded="true"] .dropdown-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      // Dropdown Menu
+      .user-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.5rem;
+        width: 18rem;
+        background: white;
+        border: 1px solid $gray-200;
+        border-radius: $border-radius-lg;
+        box-shadow: $shadow-lg;
+        z-index: $z-index-dropdown;
+        overflow: hidden;
+        animation: slideInDown 0.15s ease-out;
+
+        &__header {
+          padding: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          background-color: $gray-50;
+
+          .user-avatar-large {
+            flex-shrink: 0;
+            
+            svg {
+              height: 2.5rem;
+              width: 2.5rem;
+              color: $gray-400;
+            }
+          }
+
+          .dropdown-user-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: $gray-900;
+            margin: 0 0 0.25rem 0;
+          }
+
+          .dropdown-user-email {
+            font-size: 0.75rem;
+            color: $gray-500;
+            margin: 0 0 0.25rem 0;
+          }
+
+          .dropdown-user-role {
+            font-size: 0.75rem;
+            color: $primary-600;
+            font-weight: 500;
+            margin: 0;
+          }
+        }
+
+        &__divider {
+          height: 1px;
+          background-color: $gray-200;
+        }
+
+        &__item {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.15s ease-in-out;
+          font-size: 0.875rem;
+          color: $gray-700;
+
+          &:hover {
+            background-color: $gray-50;
+          }
+
+          &:focus {
+            outline: none;
+            background-color: $primary-50;
+            color: $primary-700;
+          }
+
+          svg {
+            height: 1.25rem;
+            width: 1.25rem;
+            flex-shrink: 0;
+          }
+
+          &.logout-btn {
+            color: $red-600;
+
+            &:hover {
+              background-color: $red-50;
+              color: $red-700;
+            }
+
+            .logout-icon {
+              color: $red-500;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .search-wrapper--dropdown {
+    position: relative;
+  }
+  .search-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    z-index: 50;
+    overflow: hidden;
+  }
+  .search-dropdown__empty {
+    padding: 0.75rem 1rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+  .search-dropdown__list {
+    margin: 0; padding: 0.25rem; list-style: none;
+    max-height: 320px; overflow-y: auto;
+  }
+  .search-result {
+    width: 100%; text-align: left; display: block;
+    padding: 0.625rem 0.75rem;
+    border-radius: 8px;
+    color: #111827;
+  }
+  .search-result:hover { background: #f3f4f6; }
+  .search-result__title { font-weight: 600; }
+  .search-result__subtitle { font-size: 0.85rem; color: #6b7280; margin-top: 2px; }
+}
+
+// Animation for dropdown
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+} 

@@ -1,0 +1,25 @@
+@use '../mixins' as *;
+
+.badge {
+  @include badge-base;
+
+  &--success {
+    @include badge-success;
+  }
+
+  &--warning {
+    @include badge-warning;
+  }
+
+  &--danger {
+    @include badge-danger;
+  }
+
+  &--info {
+    @include badge-info;
+  }
+
+  &--gray {
+    @include badge-gray;
+  }
+} 

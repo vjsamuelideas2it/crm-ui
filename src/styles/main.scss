@@ -1,0 +1,42 @@
+// Import variables and mixins first
+@use 'variables';
+@use 'mixins';
+
+// Base styles
+@use 'base/global';
+@use 'base/typography';
+@use 'base/forms';
+
+// Component styles
+@use 'components/layout';
+@use 'components/sidebar';
+@use 'components/topbar';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/badges';
+@use 'components/chat';
+
+// Page styles
+@use 'pages/auth';
+@use 'pages/dashboard';
+@use 'pages/leads';
+@use 'pages/customers';
+@use 'pages/work-items';
+@use 'pages/kanban';
+@use 'pages/lead-details';
+
+// Utility classes
+@use 'utils/utilities';
+
+// Legacy color overrides (can be removed when fully migrated to utilities)
+.text-red-600 {
+  color: #dc2626 !important;
+}
+
+.text-green-600 {
+  color: #16a34a !important;
+}
+
+.text-blue-600 {
+  color: #2563eb !important;
+} 

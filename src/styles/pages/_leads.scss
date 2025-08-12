@@ -1,0 +1,117 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.leads {
+  &__header {
+    @include flex-between;
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: $gray-900;
+    }
+
+    .add-btn {
+      @include button-primary;
+    }
+  }
+
+  &__list {
+    @include card;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        border-bottom: 1px solid $gray-200;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .lead-item {
+          padding: 1rem;
+          @include flex-between;
+
+          .lead-info {
+            @include flex-center;
+            justify-content: flex-start;
+
+            .lead-avatar {
+              flex-shrink: 0;
+              height: 2.5rem;
+              width: 2.5rem;
+              border-radius: 50%;
+              background-color: $gray-300;
+              @include flex-center;
+
+              span {
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: $gray-700;
+              }
+            }
+
+            .lead-details {
+              margin-left: 1rem;
+
+              .lead-name {
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: $gray-900;
+              }
+
+              .lead-email {
+                font-size: 0.875rem;
+                color: $gray-500;
+              }
+            }
+          }
+
+          .lead-actions {
+            @include flex-center;
+            gap: 1rem;
+
+            .lead-source {
+              font-size: 0.875rem;
+              color: $gray-500;
+            }
+
+            .lead-status {
+              @include badge-base;
+
+              &--new {
+                @include badge-info;
+              }
+
+              &--contacted {
+                @include badge-warning;
+              }
+
+              &--qualified {
+                @include badge-success;
+              }
+            }
+
+            .convert-btn {
+              color: $primary-600;
+              font-size: 0.875rem;
+              font-weight: 500;
+              background: none;
+              border: none;
+              cursor: pointer;
+              text-decoration: none;
+
+              &:hover {
+                color: $primary-900;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

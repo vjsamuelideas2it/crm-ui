@@ -1,0 +1,460 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Tag input dropdown aesthetics
+.tag-input {
+  position: relative;
+
+  &__control { display: flex; align-items: center; gap: .5rem; border: 1px solid #e5e7eb; border-radius: 8px; padding: .375rem .5rem; background: #fff; cursor: text; }
+  &__tags { display: flex; align-items: center; gap: .375rem; flex-wrap: wrap; }
+  &__placeholder { color: #9ca3af; }
+  .tag { background: #f3f4f6; border-radius: 6px; padding: .15rem .4rem; font-size: .85rem; display:inline-flex; align-items:center; gap:.25rem; }
+  .tag__remove { border:0; background:transparent; cursor:pointer; color:#6b7280; }
+  &__search { border: 0; outline: none; flex: 1; min-width: 6rem; }
+
+  &__dropdown { background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow: 0 20px 40px rgba(0,0,0,.08); padding:.25rem; max-height: 320px; overflow-y: auto; }
+  &__dropdown--floating { position: fixed; }
+  &__empty { padding:.75rem 1rem; color:#6b7280; font-size:.9rem; }
+  &__option { width:100%; text-align:left; display:block; padding:.5rem .75rem; border-radius:8px; color:#111827; background:transparent; border:0; cursor:pointer; }
+  &__option:hover { background:#f3f4f6; }
+  &__option-title { font-weight:600; }
+}
+
+// Generic section toolbar for headings + actions (filters)
+.section-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 .5rem;
+
+  &__title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111827;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+  .tag-input { min-width: 240px; }
+}
+
+// ======================================
+// FLEX UTILITIES
+// ======================================
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+// ======================================
+// GAP UTILITIES
+// ======================================
+
+.gap-1 { gap: $spacing-1; }
+.gap-2 { gap: $spacing-2; }
+.gap-3 { gap: $spacing-3; }
+.gap-4 { gap: $spacing-4; }
+.gap-5 { gap: $spacing-5; }
+.gap-6 { gap: $spacing-6; }
+
+// ======================================
+// SPACING UTILITIES (MARGIN)
+// ======================================
+
+.m-0 { margin: 0; }
+.m-1 { margin: $spacing-1; }
+.m-2 { margin: $spacing-2; }
+.m-3 { margin: $spacing-3; }
+.m-4 { margin: $spacing-4; }
+.m-5 { margin: $spacing-5; }
+.m-6 { margin: $spacing-6; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+.mt-4 { margin-top: $spacing-4; }
+.mt-5 { margin-top: $spacing-5; }
+.mt-6 { margin-top: $spacing-6; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mb-5 { margin-bottom: $spacing-5; }
+.mb-6 { margin-bottom: $spacing-6; }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: $spacing-1; }
+.ml-2 { margin-left: $spacing-2; }
+.ml-3 { margin-left: $spacing-3; }
+.ml-4 { margin-left: $spacing-4; }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: $spacing-1; }
+.mr-2 { margin-right: $spacing-2; }
+.mr-3 { margin-right: $spacing-3; }
+.mr-4 { margin-right: $spacing-4; }
+
+// ======================================
+// SPACING UTILITIES (PADDING)
+// ======================================
+
+.p-0 { padding: 0; }
+.p-1 { padding: $spacing-1; }
+.p-2 { padding: $spacing-2; }
+.p-3 { padding: $spacing-3; }
+.p-4 { padding: $spacing-4; }
+.p-5 { padding: $spacing-5; }
+.p-6 { padding: $spacing-6; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: $spacing-1; padding-right: $spacing-1; }
+.px-2 { padding-left: $spacing-2; padding-right: $spacing-2; }
+.px-3 { padding-left: $spacing-3; padding-right: $spacing-3; }
+.px-4 { padding-left: $spacing-4; padding-right: $spacing-4; }
+.px-5 { padding-left: $spacing-5; padding-right: $spacing-5; }
+.px-6 { padding-left: $spacing-6; padding-right: $spacing-6; }
+
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: $spacing-1; padding-bottom: $spacing-1; }
+.py-2 { padding-top: $spacing-2; padding-bottom: $spacing-2; }
+.py-3 { padding-top: $spacing-3; padding-bottom: $spacing-3; }
+.py-4 { padding-top: $spacing-4; padding-bottom: $spacing-4; }
+.py-5 { padding-top: $spacing-5; padding-bottom: $spacing-5; }
+.py-6 { padding-top: $spacing-6; padding-bottom: $spacing-6; }
+
+.pt-0 { padding-top: 0; }
+.pt-1 { padding-top: $spacing-1; }
+.pt-2 { padding-top: $spacing-2; }
+.pt-3 { padding-top: $spacing-3; }
+.pt-4 { padding-top: $spacing-4; }
+
+.pb-0 { padding-bottom: 0; }
+.pb-1 { padding-bottom: $spacing-1; }
+.pb-2 { padding-bottom: $spacing-2; }
+.pb-3 { padding-bottom: $spacing-3; }
+.pb-4 { padding-bottom: $spacing-4; }
+
+.pl-0 { padding-left: 0; }
+.pl-1 { padding-left: $spacing-1; }
+.pl-2 { padding-left: $spacing-2; }
+.pl-3 { padding-left: $spacing-3; }
+.pl-4 { padding-left: $spacing-4; }
+
+.pr-0 { padding-right: 0; }
+.pr-1 { padding-right: $spacing-1; }
+.pr-2 { padding-right: $spacing-2; }
+.pr-3 { padding-right: $spacing-3; }
+.pr-4 { padding-right: $spacing-4; }
+
+// ======================================
+// ICON UTILITIES
+// ======================================
+
+.icon {
+  &--xs {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  
+  &--sm {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  &--md {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  &--lg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  &--xl {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+// ======================================
+// TEXT UTILITIES
+// ======================================
+
+.text-xs {
+  font-size: $font-size-xs;
+}
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-base {
+  font-size: $font-size-base;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
+  font-size: $font-size-xl;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+// ======================================
+// COLOR UTILITIES
+// ======================================
+
+.text-gray-500 {
+  color: $gray-500;
+}
+
+.text-gray-600 {
+  color: $gray-600;
+}
+
+.text-gray-700 {
+  color: $gray-700;
+}
+
+.text-gray-900 {
+  color: $gray-900;
+}
+
+.text-red-600 {
+  color: $red-600;
+}
+
+.text-green-600 {
+  color: $green-600;
+}
+
+.text-blue-600 {
+  color: $blue-600;
+}
+
+.text-white {
+  color: white;
+}
+
+// ======================================
+// MODAL UTILITIES
+// ======================================
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+  overflow-y: auto;
+}
+
+.modal-panel {
+  background-color: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-xl;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+
+.modal-panel--sm {
+  max-width: 24rem;
+}
+
+.modal-panel--md {
+  max-width: 28rem;
+}
+
+.modal-panel--lg {
+  max-width: 32rem;
+}
+
+.modal-panel--xl {
+  max-width: 36rem;
+}
+
+.modal-panel--2xl {
+  max-width: 42rem;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-6;
+  border-bottom: $border-width-thin solid $gray-200;
+}
+
+.modal-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+  margin: 0;
+}
+
+.modal-description {
+  font-size: $font-size-sm;
+  color: $gray-500;
+  margin: $spacing-1 0 0 0;
+}
+
+.modal-close {
+  background: white;
+  border: none;
+  border-radius: $border-radius-md;
+  color: $gray-400;
+  cursor: pointer;
+  padding: $spacing-2;
+  transition: color $transition-duration-fast ease;
+
+  &:hover {
+    color: $gray-600;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.modal-body {
+  padding: $spacing-6;
+}
+
+// ======================================
+// LAYOUT UTILITIES
+// ======================================
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.rounded {
+  border-radius: $border-radius-md;
+}
+
+.rounded-lg {
+  border-radius: $border-radius-lg;
+}
+
+.shadow {
+  box-shadow: $shadow-sm;
+}
+
+.shadow-lg {
+  box-shadow: $shadow-lg;
+}
+
+.shadow-xl {
+  box-shadow: $shadow-xl;
+} 

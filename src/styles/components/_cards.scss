@@ -1,0 +1,26 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.card {
+  @include card;
+
+  &__header {
+    @include card-header;
+  }
+
+  &__body {
+    @include card-body;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: $gray-900;
+  }
+
+  &__description {
+    margin-top: 0.25rem;
+    color: $gray-600;
+    font-size: 0.875rem;
+  }
+} 

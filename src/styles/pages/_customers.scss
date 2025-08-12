@@ -1,0 +1,113 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.customers {
+  &__header {
+    @include flex-between;
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: $gray-900;
+    }
+
+    .add-btn {
+      @include button-primary;
+    }
+  }
+
+  &__list {
+    @include card;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        border-bottom: 1px solid $gray-200;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .customer-item {
+          padding: 1rem;
+          @include flex-between;
+
+          .customer-info {
+            @include flex-center;
+            justify-content: flex-start;
+
+            .customer-avatar {
+              flex-shrink: 0;
+              height: 2.5rem;
+              width: 2.5rem;
+              border-radius: 50%;
+              background-color: $gray-300;
+              @include flex-center;
+
+              span {
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: $gray-700;
+              }
+            }
+
+            .customer-details {
+              margin-left: 1rem;
+
+              .customer-name {
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: $gray-900;
+              }
+
+              .customer-email {
+                font-size: 0.875rem;
+                color: $gray-500;
+              }
+            }
+          }
+
+          .customer-actions {
+            @include flex-center;
+            gap: 1rem;
+
+            .customer-company {
+              font-size: 0.875rem;
+              color: $gray-500;
+            }
+
+            .customer-status {
+              @include badge-base;
+
+              &--active {
+                @include badge-success;
+              }
+
+              &--inactive {
+                @include badge-gray;
+              }
+            }
+
+            .edit-btn {
+              color: $primary-600;
+              font-size: 0.875rem;
+              font-weight: 500;
+              background: none;
+              border: none;
+              cursor: pointer;
+              text-decoration: none;
+
+              &:hover {
+                color: $primary-900;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 
