@@ -1,4 +1,4 @@
-import { API_BASE_URL, AUTH_TOKEN_KEY, AUTH_USER_KEY } from '../config/env';
+import { API_BASE_URL, AUTH_TOKEN_KEY } from '../config/env';
 
 export interface WorkStatus {
   id: number;

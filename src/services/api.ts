@@ -55,7 +55,7 @@ export const apiService = {
     })
   },
 
-  convertLead: async (leadId: number): Promise<Customer> => {
+  convertLead: async (): Promise<Customer> => {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve({
