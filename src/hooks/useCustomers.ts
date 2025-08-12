@@ -4,7 +4,6 @@ import { queryKeys, getInvalidationPatterns } from '../constants/queryKeys';
 import { handleQueryError } from '../lib/queryClient';
 import { leadService, Lead, CreateLeadRequest } from '../services/leadService';
 import { MESSAGES } from '../utils/Messages';
-import { AUTH_USER_KEY } from '../config/env';
 
 // Hook interface
 interface UseCustomersReturn {
@@ -40,8 +39,7 @@ export const useCustomers = (): UseCustomersReturn => {
     isPending: isAddingCustomer,
   } = useMutation({
     mutationFn: async (customer: Omit<CreateLeadRequest, 'created_by'>) => {
-      const userStr = localStorage.getItem(AUTH_USER_KEY);
-      const currentUser = userStr ? JSON.parse(userStr) : null;
+      // currentUser not needed; created_by is injected inside leadService
       const payload: Omit<CreateLeadRequest, 'created_by'> = {
         ...customer,
         is_converted: true,

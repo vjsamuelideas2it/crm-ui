@@ -132,7 +132,7 @@ const Users: React.FC = () => {
         onClose={() => setIsConfirmOpen(false)}
         onConfirm={handleConfirmDelete}
         title="Delete User"
-        message={MESSAGES.CONFIRM_DELETE}
+        message={MESSAGES.CONFIRM_DELETE_USER}
         confirmText={ButtonLabels.DELETE_USER}
         cancelText={ButtonLabels.CANCEL}
         type="danger"

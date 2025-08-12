@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { leadService, Lead as BaseLead } from '../services/leadService';
 import { useWorkItems, useTasks } from '../hooks/useWorkItems';
 import { useUsers } from '../hooks/useUsers';
-import StatusBadge from '../components/StatusBadge';
+// import StatusBadge from '../components/StatusBadge';
 import { useCommunications } from '../hooks/useCommunications';
 import ChatThread, { ChatMessage } from '../components/ChatThread';
 import TagInput from '../components/TagInput';

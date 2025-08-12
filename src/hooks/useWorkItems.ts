@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { workItemService, WorkItem, Task, CreateWorkItemRequest, UpdateWorkItemRequest, CreateTaskRequest, UpdateTaskRequest, WorkStatus } from '../services/workItemService';
+import { workItemService, CreateWorkItemRequest, UpdateWorkItemRequest, CreateTaskRequest, UpdateTaskRequest, WorkStatus } from '../services/workItemService';
 import { queryKeys, getInvalidationPatterns } from '../constants/queryKeys';
 import { handleQueryError } from '../lib/queryClient';
 

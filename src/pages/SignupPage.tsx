@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/AuthContext';
-import { authService, SignupRequest } from '../services/authService';
+import { authService } from '../services/authService';
 import { useRoles } from '../hooks/useRoles';
 
 interface SignupFormData {
